@@ -65,7 +65,7 @@ class _MeetingBottomNavigationBarState
             builder: (_, showControls, __) {
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.only(top: 5, bottom: 8.0),
+                margin: const EdgeInsets.only(top: 15, bottom: 8.0),
                 height: showControls ? 40 : 0,
                 child: showControls
                     ? Row(
