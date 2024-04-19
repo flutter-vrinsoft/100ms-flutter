@@ -28,14 +28,14 @@ class HLSPlayerStore extends ChangeNotifier {
   ///If video is paused we don't hide the buttons
   ///In other case we hide th buttons after 5 seconds
   void startTimerToHideButtons() {
-    _isTimerActive = true;
-    Timer(const Duration(seconds: 5), () {
-      if (isStreamPlaying) {
-        areStreamControlsVisible = false;
-        notifyListeners();
-      }
-      _isTimerActive = false;
-    });
+    // _isTimerActive = true;
+    // Timer(const Duration(seconds: 5), () {
+    //   if (isStreamPlaying) {
+    //     areStreamControlsVisible = false;
+    //     notifyListeners();
+    //   }
+    //   _isTimerActive = false;
+    // });
   }
 
   void setStreamPlaying(bool isStreamPlaying) {

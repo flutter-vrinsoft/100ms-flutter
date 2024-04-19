@@ -26,19 +26,14 @@ class MeetingGridComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<
-            MeetingStore,
-            Tuple7<List<PeerTrackNode>, bool, int, int, MeetingMode,
-                PeerTrackNode?, int>>(
+    return Selector<MeetingStore, Tuple7<List<PeerTrackNode>, bool, int, int, MeetingMode, PeerTrackNode?, int>>(
         selector: (_, meetingStore) => Tuple7(
             meetingStore.peerTracks,
             meetingStore.isHLSLink,
             meetingStore.peerTracks.length,
             meetingStore.screenShareCount,
             meetingStore.meetingMode,
-            meetingStore.peerTracks.isNotEmpty
-                ? meetingStore.peerTracks[meetingStore.screenShareCount]
-                : null,
+            meetingStore.peerTracks.isNotEmpty ? meetingStore.peerTracks[meetingStore.screenShareCount] : null,
             meetingStore.viewControllers.length),
         builder: (_, data, __) {
           if (data.item3 == 0 || data.item7 == 0) {
@@ -55,14 +50,12 @@ class MeetingGridComponent extends StatelessWidget {
                 ),
                 if (context.read<MeetingStore>().peers.isNotEmpty)
                   HMSTitleText(
-                      text: "Please wait for broadcaster to join",
-                      textColor: HMSThemeColors.onSurfaceHighEmphasis)
+                      text: "Please wait for broadcaster to join", textColor: HMSThemeColors.onSurfaceHighEmphasis)
               ],
             ));
           }
           return Selector<MeetingStore, Tuple2<MeetingMode, HMSPeer?>>(
-              selector: (_, meetingStore) =>
-                  Tuple2(meetingStore.meetingMode, meetingStore.localPeer),
+              selector: (_, meetingStore) => Tuple2(meetingStore.meetingMode, meetingStore.localPeer),
               builder: (_, modeData, __) {
                 ///This renders the video grid based on whether the controls are visible or not
                 return Selector<MeetingNavigationVisibilityController, bool>(
@@ -91,20 +84,10 @@ class MeetingGridComponent extends StatelessWidget {
                                   MediaQuery.of(context).padding.bottom -
                                   20,
                           child: GestureDetector(
-                            onTap: () => visibilityController
-                                ?.toggleControlsVisibility(),
-                            child: (modeData.item1 ==
-                                        MeetingMode.activeSpeakerWithInset &&
-                                    (context
-                                                .read<MeetingStore>()
-                                                .localPeer
-                                                ?.audioTrack !=
-                                            null ||
-                                        context
-                                                .read<MeetingStore>()
-                                                .localPeer
-                                                ?.videoTrack !=
-                                            null))
+                            onTap: () => visibilityController?.toggleControlsVisibility(),
+                            child: (modeData.item1 == MeetingMode.activeSpeakerWithInset &&
+                                    (context.read<MeetingStore>().localPeer?.audioTrack != null ||
+                                        context.read<MeetingStore>().localPeer?.videoTrack != null))
                                 ? OneToOneMode(
                                     ///This is done to keep the inset tile
                                     ///at correct position when controls are hidden
