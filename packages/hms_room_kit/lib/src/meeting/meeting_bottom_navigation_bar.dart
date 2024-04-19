@@ -65,7 +65,7 @@ class _MeetingBottomNavigationBarState
             builder: (_, showControls, __) {
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.only(top: 15, bottom: 8.0),
+                margin: const EdgeInsets.only(top: 5, bottom: 8.0),
                 height: showControls ? 40 : 0,
                 child: showControls
                     ? Row(
@@ -81,9 +81,9 @@ class _MeetingBottomNavigationBarState
                                 HMSThemeColors.alertErrorDefault,
                             isActive: false,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
                               child: SvgPicture.asset(
-                                "packages/hms_room_kit/lib/src/assets/icons/exit_room.svg",
+                                "packages/hms_room_kit/lib/src/assets/icons/mic_state_on.svg",
                                 colorFilter: ColorFilter.mode(
                                     HMSThemeColors.alertErrorBrighter,
                                     BlendMode.srcIn),
